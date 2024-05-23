@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 
 public class FatorialView extends JFrame {
-	private static final long serialVersionUID = 6265594525071196118L;
-	private JTextField numeroField;
+    private static final long serialVersionUID = 6265594525071196118L;
+    private JTextField numeroField;
     private JLabel resultadoLabel;
 
     public FatorialView() {
@@ -17,8 +17,11 @@ public class FatorialView extends JFrame {
         setLocationRelativeTo(null);
 
         numeroField = new JTextField(10);
+        numeroField.setName("numeroField");  // Definindo nome
         resultadoLabel = new JLabel("Resultado: ");
+        resultadoLabel.setName("resultadoLabel");  // Definindo nome
         JButton calcularButton = new JButton("Calcular");
+        calcularButton.setName("calcularButton");  // Definindo nome
 
         calcularButton.addActionListener(new ActionListener() {
             @Override
@@ -44,8 +47,10 @@ public class FatorialView extends JFrame {
             resultadoLabel.setText("Resultado: " + resultado.toString());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, insira um número válido.", "Erro de Formato", JOptionPane.ERROR_MESSAGE);
+            resultadoLabel.setText("Entrada inválida!");
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erro de Valor", JOptionPane.ERROR_MESSAGE);
+            resultadoLabel.setText("Entrada inválida!");
         }
     }
 
@@ -58,4 +63,3 @@ public class FatorialView extends JFrame {
         });
     }
 }
-
